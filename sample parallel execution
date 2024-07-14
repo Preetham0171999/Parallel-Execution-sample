@@ -1,0 +1,55 @@
+pipeline{
+    agent any
+    stages{
+        stage('parallel'){
+            parallel{
+                stage('first'){
+                    steps{
+                        script
+                        {
+                            try {
+                                 echo "abcd"
+                            }
+                            catch (Exception e) {
+                                echo "exception is generated of $e"
+                            }
+                        }
+                       
+                    }
+                }
+                stage('second'){
+                    steps{
+                        echo "second output"
+                    }
+                }
+                stage ('third'){
+                    steps{
+                        echo "third"
+                    }
+                }
+            }
+        }
+    }
+    
+post
+{
+    success
+    {
+        // mail bcc: '', body: 'Done and dusted', cc: 'abcd@gmail.com', from: '', replyTo: '', subject: 'your project was successfull', to: 'preethamkenganal06@gmail.com'
+        echo "project successfull"
+    }
+    failure
+    {
+        // mail bcc: '', body: 'Done and dusted', cc: 'abcd@gmail.com', from: '', replyTo: '', subject: 'your project was failure', to: 'preethamkenganal06@gmail.com'
+        echo "project was failure"
+    }
+    aborted {
+        echo "project was aborted for some reason"
+    }
+    always
+    {
+    echo "this will be printed always"    
+        
+    }
+}
+}
