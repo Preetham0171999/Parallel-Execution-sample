@@ -11,7 +11,7 @@ pipeline{
                                  echo "abcd"
                             }
                             catch (Exception e) {
-                                echo "exception is generated of exception $e"  //webhook update
+                                echo "exception is generated of exception $e"  //webhook update new branch
                             }
                         }
                        
