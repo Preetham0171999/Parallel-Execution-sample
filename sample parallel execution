@@ -24,7 +24,7 @@ pipeline{
                 }
                 stage ('third'){
                     steps{
-                        echo "third"
+                        echo "third output"
                     }
                 }
             }
